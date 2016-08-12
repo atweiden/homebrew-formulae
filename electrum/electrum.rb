@@ -3,8 +3,12 @@ require 'formula'
 class Electrum < Formula
   desc 'Lightweight Bitcoin wallet'
   homepage 'https://electrum.org'
-  url 'https://download.electrum.org/Electrum-2.6.4.tar.gz'
+  url 'https://download.electrum.org/2.6.4/Electrum-2.6.4.tar.gz'
   sha256 '2ab53b434206ed8ae72e9cadb22d44ef9ba720a7d052abe102f5d55cafbef866'
+
+  head do
+    url "https://github.com/spesmilo/electrum.git"
+  end
 
   depends_on :python if MacOS.version <= :snow_leopard
   depends_on 'curl'    => :build
@@ -111,13 +115,11 @@ class Electrum < Formula
       resource(r).stage { system "python", *install_args }
     end
 
-    system "pyrcc4", "icons.qrc", "-o", "gui/qt/icons_rc.py"
-    system
-      "protoc",
-      "--proto_path=lib/",
-      "--python_out=lib/",
-      "lib/paymentrequest.proto"
-    system "python", "contrib/make_locale"
+    if build.head? do
+      system "pyrcc4", "icons.qrc", "-o", "gui/qt/icons_rc.py"
+      system "protoc", "--proto_path=lib/", "--python_out=lib/", "lib/paymentrequest.proto"
+      system "python", "contrib/make_locale"
+    end
     system "python", "setup.py", "build"
     system "python", "setup.py", "install", "--prefix=#{prefix}", "--optimize=1"
 
