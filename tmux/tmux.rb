@@ -1,6 +1,7 @@
 class Tmux < Formula
   desc "Terminal multiplexer"
   homepage "https://tmux.github.io/"
+  patch :DATA
 
   head do
     url "https://github.com/tmux/tmux.git"
