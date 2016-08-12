@@ -115,13 +115,16 @@ class Electrum < Formula
       resource(r).stage { system "python", *install_args }
     end
 
-    if build.head? do
+    if build.head?
       system "pyrcc4", "icons.qrc", "-o", "gui/qt/icons_rc.py"
       system "protoc", "--proto_path=lib/", "--python_out=lib/", "lib/paymentrequest.proto"
       system "python", "contrib/make_locale"
     end
     system "python", "setup.py", "build"
     system "python", "setup.py", "install", "--prefix=#{prefix}", "--optimize=1"
+
+    # fix linking conflicts
+    rm Dir["#{bin}/easy_install*"]
 
     bin.env_script_all_files(libexec+'bin', :PYTHONPATH => ENV['PYTHONPATH'])
   end
