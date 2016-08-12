@@ -9,6 +9,8 @@ class Peru < Formula
   depends_on 'git'
   depends_on 'libyaml'
   depends_on 'python3'
+  depends_on 'mercurial' => :optional
+  depends_on 'subversion' => :optional
 
   resource 'docopt' do
     url 'https://pypi.python.org/packages/a2/55/8f8cab2afd404cf578136ef2cc5dfb50baa1761b68c9da1fb1e4eed343c9/docopt-0.6.2.tar.gz'
