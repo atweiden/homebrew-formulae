@@ -9,7 +9,7 @@ class Libxxhash < Formula
 
   def install
     system "mkdir", "-p", "build"
-    system "cd", "build"
+    Dir.chdir("build")
     system "cmake", "-DCMAKE_INSTALL_PREFIX=#{prefix}", "../cmake_unofficial/"
     system "make", "all"
     system "make", "install"
