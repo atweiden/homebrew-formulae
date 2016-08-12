@@ -11,8 +11,8 @@ class Electrum < Formula
   end
 
   depends_on :python if MacOS.version <= :snow_leopard
-  depends_on 'curl'    => :build
-  depends_on 'gettext' => :build
+  depends_on 'curl'    => :build if build.head?
+  depends_on 'gettext' => :build if build.head?
   depends_on 'gmp'
   depends_on 'pillow'
   depends_on 'protobuf'
