@@ -26,7 +26,12 @@ class Peru < Formula
     ENV["PYTHONPATH"] = lib+"python3.5/site-packages"
     ENV.prepend_create_path 'PYTHONPATH', libexec+'lib/python3.5/site-packages'
     ENV.prepend_create_path 'PYTHONPATH', prefix+'lib/python3.5/site-packages'
-    install_args = [ "setup.py", "install", "--prefix=#{libexec}" ]
+    install_args = [
+      "setup.py",
+      "install",
+      "--prefix=#{libexec}",
+      "--optimize=1"
+    ]
 
     res = %w[docopt yaml]
     res.each do |r|
