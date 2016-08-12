@@ -1,8 +1,8 @@
 require 'formula'
 
 class Peru < Formula
-  homepage 'https://github.com/buildinspace/peru'
   desc "A tool for including other people's code in your projects"
+  homepage 'https://github.com/buildinspace/peru'
   url 'https://github.com/buildinspace/peru/archive/1.0.0.tar.gz'
   sha256 '386936ce853ed4d9d9b801d1c7d05295e54ceafebbb86fb89e78e27f504f6045'
 
