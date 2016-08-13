@@ -1,6 +1,6 @@
 /* vim: set ft=journal fdm=marker fdl=0 nowrap: */
 
-Homebrew formulae for Mac OS X
+Homebrew formulae for Mac
 
 
 Licensing
