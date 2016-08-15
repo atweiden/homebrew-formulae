@@ -3,8 +3,8 @@ require 'formula'
 class Peru < Formula
   desc "A tool for including other people's code in your projects"
   homepage 'https://github.com/buildinspace/peru'
-  url 'https://github.com/buildinspace/peru/archive/1.0.0.tar.gz'
-  sha256 '386936ce853ed4d9d9b801d1c7d05295e54ceafebbb86fb89e78e27f504f6045'
+  url 'https://github.com/buildinspace/peru/archive/1.0.1.tar.gz'
+  sha256 '7b606653f33b868b0544ada30a037f669ceb6425aeabbf1f9998f44c2f972eb4'
 
   depends_on 'git'
   depends_on 'libyaml'
