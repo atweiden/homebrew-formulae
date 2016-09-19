@@ -24,6 +24,7 @@ class Tmux < Formula
 
     ENV.append "LDFLAGS", "-lresolv"
     system "./configure", "--disable-dependency-tracking",
+                          "--enable-utf8proc",
                           "--prefix=#{prefix}",
                           "--sysconfdir=#{etc}"
 
