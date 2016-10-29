@@ -3,8 +3,8 @@ require 'formula'
 class Peru < Formula
   desc "A tool for including other people's code in your projects"
   homepage 'https://github.com/buildinspace/peru'
-  url 'https://github.com/buildinspace/peru/archive/1.0.1.tar.gz'
-  sha256 '7b606653f33b868b0544ada30a037f669ceb6425aeabbf1f9998f44c2f972eb4'
+  url 'https://github.com/buildinspace/peru/archive/1.1.0.tar.gz'
+  sha256 '0b1b24e03f4c25e88dd390f86a8bd9865edeb79cff725354c0f99fc5db90ca1f'
 
   depends_on 'git'
   depends_on 'libyaml'
@@ -18,8 +18,8 @@ class Peru < Formula
   end
 
   resource 'yaml' do
-    url 'https://pypi.python.org/packages/75/5e/b84feba55e20f8da46ead76f14a3943c8cb722d40360702b2365b91dec00/PyYAML-3.11.tar.gz'
-    sha256 'c36c938a872e5ff494938b33b14aaa156cb439ec67548fcab3535bb78b0846e8'
+    url 'https://pypi.python.org/packages/4a/85/db5a2df477072b2902b0eb892feb37d88ac635d36245a72a6a69b23b383a/PyYAML-3.12.tar.gz'
+    sha256 '592766c6303207a20efc445587778322d7f73b161bd994f227adaa341ba212ab'
   end
 
   def install
