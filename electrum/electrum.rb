@@ -114,12 +114,12 @@ class Electrum < Formula
       pbkdf2
       protobuf
       PySocks
+      pyaes
       pycrypto
       pycurl
       qrcode
       requests
       six
-      slowaes
       urllib3
     ]
     res.each do |r|
