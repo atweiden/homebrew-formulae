@@ -3,7 +3,7 @@ require 'formula'
 class Electrum < Formula
   desc 'Lightweight Bitcoin wallet'
   homepage 'https://electrum.org'
-  url 'https://download.electrum.org/2.6.4/Electrum-2.6.4.tar.gz'
+  url 'https://download.electrum.org/2.7.18/Electrum-2.7.18.tar.gz'
   sha256 '2ab53b434206ed8ae72e9cadb22d44ef9ba720a7d052abe102f5d55cafbef866'
 
   head do
@@ -26,8 +26,8 @@ class Electrum < Formula
   end
 
   resource 'dnspython' do
-    url 'https://pypi.python.org/packages/e1/ab/36f4e337d6cf6590f9cf46349f519b682542d211c604755ab8409f67f26b/dnspython-1.14.0.zip'
-    sha256 '21458b942637578f238c7029dc0512c75e61ef64ee0de82a62d175e89d2131dc'
+    url 'https://pypi.python.org/packages/e4/96/a598fa35f8a625bc39fed50cdbe3fd8a52ef215ef8475c17cabade6656cb/dnspython-1.15.0.zip'
+    sha256 '40f563e1f7a7b80dc5a4e76ad75c23da53d62f1e15e6e517293b04e1f84ead7c'
   end
 
   resource 'ecdsa' do
@@ -46,8 +46,13 @@ class Electrum < Formula
   end
 
   resource 'protobuf' do
-    url 'https://pypi.python.org/packages/14/3e/56da1ecfa58f6da0053a523444dff9dfb8a18928c186ad529a24b0e82dec/protobuf-3.0.0.tar.gz'
-    sha256 'ecc40bc30f1183b418fe0ec0c90bc3b53fa1707c4205ee278c6b90479e5b6ff5'
+    url 'https://pypi.python.org/packages/e0/2f/690a5f047e2cfef40c9c5eec0877b496dc1f5a0625ca6b0ac1cd11f12f6a/protobuf-3.2.0.tar.gz'
+    sha256 'a48475035c42d13284fd7bf3a2ffa193f8c472ad1e8539c8444ea7e2d25823a1'
+  end
+
+  resource 'PySocks' do
+    url 'https://pypi.python.org/packages/fd/70/ba9982cedc9b3ed3c06934f1f46a609e0f23c7bfdf567c52a09f1296b8cb/PySocks-1.6.6.tar.gz'
+    sha256 '02419a225ff5dcfc3c9695ef8fc9b4d8cc99658e650c6d4718d4c8f451e63f41'
   end
 
   resource 'pycrypto' do
@@ -66,8 +71,8 @@ class Electrum < Formula
   end
 
   resource 'requests' do
-    url 'https://pypi.python.org/packages/8d/66/649f861f980c0a168dd4cccc4dd0ed8fa5bd6c1bed3bea9a286434632771/requests-2.11.0.tar.gz'
-    sha256 'b2ff053e93ef11ea08b0e596a1618487c4e4c5f1006d7a1706e3671c57dea385'
+    url 'https://pypi.python.org/packages/16/09/37b69de7c924d318e51ece1c4ceb679bf93be9d05973bb30c35babd596e2/requests-2.13.0.tar.gz'
+    sha256 '5722cd09762faa01276230270ff16af7acf7c5c45d623868d9ba116f15791ce8'
   end
 
   resource 'six' do
@@ -81,14 +86,19 @@ class Electrum < Formula
   end
 
   resource 'urllib3' do
-    url 'https://pypi.python.org/packages/3b/f0/e763169124e3f5db0926bc3dbfcd580a105f9ca44cf5d8e6c7a803c9f6b5/urllib3-1.16.tar.gz'
-    sha256 '63d479478ddfc83bbc11577dc16d47835c5179ac13e550118ca143b62c4bf9ab'
+    url 'https://pypi.python.org/packages/20/56/a6aa403b0998f857b474a538343ee483f5c02491bd1aebf61d42a3f60f77/urllib3-1.20.tar.gz'
+    sha256 '97ef2b6e2878d84c0126b9f4e608e37a951ca7848e4855a7f7f4437d5c34a72f'
   end
 
   def install
     ENV["PYTHONPATH"] = lib+"python2.7/site-packages"
     ENV.prepend_create_path 'PYTHONPATH', libexec+'lib/python2.7/site-packages'
     ENV.prepend_create_path 'PYTHONPATH', prefix+'lib/python2.7/site-packages'
+    # for homebrew curl built with homebrew `--with-openssl` option
+    ENV.append "LDFLAGS", "-L/usr/local/opt/openssl/lib"
+    ENV.append "CPPFLAGS", "-I/usr/local/opt/openssl/include"
+    ENV.append "PKG_CONFIG_PATH", "/usr/local/opt/openssl/lib/pkgconfig"
+
     install_args = [
       "setup.py",
       "install",
@@ -103,6 +113,7 @@ class Electrum < Formula
       jsonrpclib
       pbkdf2
       protobuf
+      PySocks
       pycrypto
       pycurl
       qrcode
