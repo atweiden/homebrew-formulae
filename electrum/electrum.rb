@@ -3,8 +3,8 @@ require 'formula'
 class Electrum < Formula
   desc 'Lightweight Bitcoin wallet'
   homepage 'https://electrum.org'
-  url 'https://download.electrum.org/2.7.18/Electrum-2.7.18.tar.gz'
-  sha256 '2ab53b434206ed8ae72e9cadb22d44ef9ba720a7d052abe102f5d55cafbef866'
+  url 'https://download.electrum.org/2.8.0/Electrum-2.8.0.tar.gz'
+  sha256 '6343ae1732920734c45ebf899592c1c29123530ce027b4dcdd4a62e87663e9ef'
 
   head do
     url "https://github.com/spesmilo/electrum.git"
@@ -60,9 +60,9 @@ class Electrum < Formula
     sha256 '9cd5a54d914b1eebfb14fcb490315214b6a0304d9f1bb47e90d1d8e0b15ce92e'
   end
 
-  resource 'pycrypto' do
-    url 'https://pypi.python.org/packages/60/db/645aa9af249f059cc3a368b118de33889219e0362141e75d4eaf6f80f163/pycrypto-2.6.1.tar.gz'
-    sha256 'f2ce1e989b272cfcb677616763e0a2e7ec659effa67a88aa92b3a65528f60a3c'
+  resource 'pycryptodomex' do
+    url 'https://pypi.python.org/packages/8e/a1/4c3aa525c537f149375722103af4203573a3ce808d98d5c64b7b0b3834b3/pycryptodomex-3.4.5.tar.gz'
+    sha256 '921f042704f21d1284e2bb2546fab7f126a5c57f78ab99c6aa57795d342dbcd8'
   end
 
   resource 'pycurl' do
@@ -98,6 +98,8 @@ class Electrum < Formula
     ENV.append "LDFLAGS", "-L/usr/local/opt/openssl/lib"
     ENV.append "CPPFLAGS", "-I/usr/local/opt/openssl/include"
     ENV.append "PKG_CONFIG_PATH", "/usr/local/opt/openssl/lib/pkgconfig"
+    ENV.append "LIBRARY_PATH", "/usr/local/opt/openssl/lib"
+    ENV.append "CPATH", "/usr/local/opt/openssl/include"
 
     install_args = [
       "setup.py",
@@ -115,7 +117,7 @@ class Electrum < Formula
       protobuf
       PySocks
       pyaes
-      pycrypto
+      pycryptodomex
       pycurl
       qrcode
       requests
