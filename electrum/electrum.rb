@@ -16,8 +16,8 @@ class Electrum < Formula
   depends_on 'gmp'
   depends_on 'pillow'
   depends_on 'protobuf'
-  depends_on 'pyqt'
-  depends_on 'qt'
+  depends_on 'cartr/qt4/pyqt'
+  depends_on 'cartr/qt4/qt'
   depends_on 'zbar' => :optional
 
   resource 'chardet' do
