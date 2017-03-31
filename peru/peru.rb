@@ -3,8 +3,8 @@ require 'formula'
 class Peru < Formula
   desc "A tool for including other people's code in your projects"
   homepage 'https://github.com/buildinspace/peru'
-  url 'https://github.com/buildinspace/peru/archive/1.1.0.tar.gz'
-  sha256 '0b1b24e03f4c25e88dd390f86a8bd9865edeb79cff725354c0f99fc5db90ca1f'
+  url 'https://github.com/buildinspace/peru/archive/1.1.2.tar.gz'
+  sha256 '524661173449eb1272b5757ec7eb6fdabda7cf738ae40d3c8bb19b4f43fb951e'
 
   depends_on 'git'
   depends_on 'libyaml'
@@ -23,7 +23,7 @@ class Peru < Formula
   end
 
   def install
-    ENV["PYTHONPATH"] = lib+"python3.5/site-packages"
+    ENV["PYTHONPATH"] = lib+"python3.6/site-packages"
     ENV.prepend_create_path 'PYTHONPATH', libexec+'lib/python3.5/site-packages'
     ENV.prepend_create_path 'PYTHONPATH', prefix+'lib/python3.5/site-packages'
     install_args = [
