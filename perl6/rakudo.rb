@@ -1,3 +1,4 @@
+require "FileUtils"
 class Rakudo < Formula
   desc "Perl6 on MoarVM"
   homepage "https://github.com/rakudo/rakudo"
@@ -24,6 +25,8 @@ class Rakudo < Formula
     ENV["RAKUDO_LOG_PRECOMP"] = "1"
     ENV["RAKUDO_RERESOLVE_DEPENDENCIES"] = "0"
     system "make", "install"
+    FileUtils.mv "tools/install-dist.pl", "tools/perl6-install-dist"
+    bin.install "tools/perl6-install-dist"
   end
 
   test do
