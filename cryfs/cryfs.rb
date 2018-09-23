@@ -1,13 +1,16 @@
-require "open3"
-
 class Cryfs < Formula
   desc "Cryptographic filesystem for the cloud"
   homepage "https://www.cryfs.org"
-  url "https://github.com/cryfs/cryfs.git", tag: "0.9.7"
-  head "https://github.com/cryfs/cryfs.git", branch: "develop"
+  url "https://github.com/cryfs/cryfs/releases/download/0.9.9/cryfs-0.9.9.tar.xz"
+  sha256 "aa8d90bb4c821cf8347f0f4cbc5f68a1e0f4eb461ffd8f1ee093c4d37eac2908"
+
+  head do
+    url "https://github.com/cryfs/cryfs.git", branch: "develop"
+    depends_on "libomp"
+  end
 
   depends_on "cmake" => :build
-  depends_on :python => :build
+  depends_on "python" => :build
   depends_on "openssl"
   depends_on "boost"
   depends_on "cryptopp"
@@ -18,12 +21,13 @@ class Cryfs < Formula
   def install
     ncpu = `sysctl -n hw.ncpu`.to_i
     mkdir("build") do
-      # TODO Homebrew is passing in CXXFLAGS to cmake which disable -O3.
-      # TODO Can I make it build with -O3?
       system "cmake",
-             "-DCMAKE_BUILD_TYPE=Release",
              "-DBUILD_TESTING=off",
+             "-DCMAKE_BUILD_TYPE=Release",
              "-DCRYFS_UPDATE_CHECKS=off",
+             "-DOpenMP_CXX_FLAGS='-Xpreprocessor -fopenmp -I#{opt_include}'",
+             "-DOpenMP_CXX_LIB_NAMES=omp",
+             "-DOpenMP_omp_LIBRARY=#{opt_lib}/libomp.dylib",
              "..",
              *std_cmake_args
       system "make", "-j#{ncpu}"
@@ -32,9 +36,7 @@ class Cryfs < Formula
   end
 
   test do
-    Open3.popen3("#{bin}/cryfs") do |stdin, stdout, _|
-      stdin.close
-      assert_match "CryFS", stdout.read
-    end
+    ENV["CRYFS_FRONTEND"] = "noninteractive"
+    assert_match "CryFS", shell_output("#{bin}/cryfs", 10)
   end
 end
