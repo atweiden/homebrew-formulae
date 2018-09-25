@@ -1,22 +1,25 @@
 class Nqp < Formula
-  desc "Lightweight Perl6-like environment for virtual machines, with MoarVM support"
+  desc "A lightweight Perl 6-like environment for virtual machines, with MoarVM support"
   homepage "https://github.com/perl6/nqp"
-  url "https://codeload.github.com/perl6/nqp/tar.gz/2017.07"
-  sha256 "3d23d97a1ae4aec7f287aa4e8dc1bb26922ce235d03da5972f6398053c345558"
+  url "https://rakudo.perl6.org/downloads/nqp/nqp-2018.09.tar.gz"
+  sha256 "8effea7b14a52a4c09a000bf6cde4cbf13385246af9b31a5da4dab27361ca905"
 
   head do
     url "https://github.com/perl6/nqp.git"
   end
 
   depends_on "moarvm"
+  depends_on "moarvm" => :build
   depends_on "make" => :build
   depends_on "perl" => :build
 
   def install
-    system "perl", "Configure.pl",
+    configure_args = [
+      "--backends=moar",
       "--prefix=#{prefix}",
-      "--with-moar=/usr/local/bin/moar",
-      "--backends=moar"
+      "--with-moar=/usr/local/bin/moar"
+    ]
+    system "perl", "Configure.pl", *configure_args
     system "make"
     system "make", "install"
   end
