@@ -9,12 +9,12 @@ class Cryfs < Formula
     depends_on "libomp"
   end
 
-  depends_on "cmake" => :build
-  depends_on "python" => :build
-  depends_on "openssl"
   depends_on "boost"
   depends_on "cryptopp"
+  depends_on "openssl"
   depends_on :osxfuse
+  depends_on "cmake" => :build
+  depends_on "python" => :build
 
   needs :cxx11
 
