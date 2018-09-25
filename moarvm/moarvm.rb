@@ -1,4 +1,3 @@
-require "FileUtils"
 class Moarvm < Formula
   desc "A VM for NQP and Rakudo Perl 6"
   homepage "https://moarvm.org"
