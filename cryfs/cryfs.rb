@@ -19,18 +19,18 @@ class Cryfs < Formula
   needs :cxx11
 
   def install
+    configure_args = [
+      "-DBUILD_TESTING=off",
+      "-DCMAKE_BUILD_TYPE=Release",
+      "-DCRYFS_UPDATE_CHECKS=off"
+    ]
+    configure_args.concat([
+      "-DOpenMP_CXX_FLAGS='-Xpreprocessor -fopenmp -I#{opt_include}'",
+      "-DOpenMP_CXX_LIB_NAMES=omp",
+      "-DOpenMP_omp_LIBRARY=#{opt_lib}/libomp.dylib"
+    ]) if build.head?
     ncpu = `sysctl -n hw.ncpu`.to_i
     mkdir("build") do
-      configure_args = [
-        "-DBUILD_TESTING=off",
-        "-DCMAKE_BUILD_TYPE=Release",
-        "-DCRYFS_UPDATE_CHECKS=off"
-      ]
-      configure_args.concat([
-        "-DOpenMP_CXX_FLAGS='-Xpreprocessor -fopenmp -I#{opt_include}'",
-        "-DOpenMP_CXX_LIB_NAMES=omp",
-        "-DOpenMP_omp_LIBRARY=#{opt_lib}/libomp.dylib"
-      ]) if build.head?
       system "cmake", *configure_args, *std_cmake_args, ".."
       system "make", "-j#{ncpu}"
       system "make", "install", "prefix=#{prefix}"
