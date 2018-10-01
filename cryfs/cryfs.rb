@@ -19,11 +19,17 @@ class Cryfs < Formula
   needs :cxx11
 
   def install
+    libomp = Formula['libomp']
     configure_args = [
       "-DBUILD_TESTING=off",
       "-DCMAKE_BUILD_TYPE=Release",
       "-DCRYFS_UPDATE_CHECKS=off"
     ]
+    configure_args.concat([
+      "-DOpenMP_CXX_FLAGS='-Xpreprocessor -fopenmp -I#{libomp.include}'",
+      "-DOpenMP_CXX_LIB_NAMES=omp",
+      "-DOpenMP_omp_LIBRARY=#{libomp.lib}/libomp.dylib"
+    ]) if build.head?
     ncpu = `sysctl -n hw.ncpu`.to_i
     mkdir("build") do
       system "cmake", *configure_args, *std_cmake_args, ".."
