@@ -5,7 +5,7 @@ class Cryfs < Formula
   sha256 "aa8d90bb4c821cf8347f0f4cbc5f68a1e0f4eb461ffd8f1ee093c4d37eac2908"
 
   head do
-    url "https://github.com/cryfs/cryfs.git", branch: "develop"
+    url "https://github.com/cryfs/cryfs.git", branch: "develop", :shallow => false
     depends_on "libomp"
   end
 
