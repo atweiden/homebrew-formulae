@@ -4,7 +4,6 @@ class Tmux < Formula
 
   head do
     url "https://github.com/tmux/tmux.git"
-
     depends_on "autoconf" => :build
     depends_on "automake" => :build
     depends_on "libtool" => :build
@@ -21,15 +20,12 @@ class Tmux < Formula
 
   def install
     system "sh", "autogen.sh" if build.head?
-
     ENV.append "LDFLAGS", "-lresolv"
     system "./configure", "--disable-dependency-tracking",
                           "--enable-utf8proc",
                           "--prefix=#{prefix}",
                           "--sysconfdir=#{etc}"
-
     system "make", "install"
-
     pkgshare.install "example_tmux.conf"
     bash_completion.install resource("completion")
   end

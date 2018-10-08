@@ -3,10 +3,7 @@ class Nqp < Formula
   homepage "https://github.com/perl6/nqp"
   url "https://rakudo.perl6.org/downloads/nqp/nqp-2018.09.tar.gz"
   sha256 "8effea7b14a52a4c09a000bf6cde4cbf13385246af9b31a5da4dab27361ca905"
-
-  head do
-    url "https://github.com/perl6/nqp.git"
-  end
+  head "https://github.com/perl6/nqp.git"
 
   depends_on "moarvm"
   depends_on "moarvm" => :build
@@ -17,7 +14,7 @@ class Nqp < Formula
     configure_args = [
       "--backends=moar",
       "--prefix=#{prefix}",
-      "--with-moar=/usr/local/bin/moar"
+      "--with-moar=#{bin}/moar"
     ]
     system "perl", "Configure.pl", *configure_args
     system "make"

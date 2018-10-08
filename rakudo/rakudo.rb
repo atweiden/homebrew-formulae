@@ -4,10 +4,7 @@ class Rakudo < Formula
   homepage "https://rakudo.org"
   url "https://rakudo.perl6.org/downloads/rakudo/rakudo-2018.09.tar.gz"
   sha256 "4934b84f844adb61ec949b5f4fd31fbc86a83e2195fb2498a1bc2b77d9d859fb"
-
-  head do
-    url "https://github.com/rakudo/rakudo.git"
-  end
+  head "https://github.com/rakudo/rakudo.git"
 
   depends_on "nqp"
   depends_on "nqp" => :build
@@ -18,7 +15,7 @@ class Rakudo < Formula
     configure_args = [
       "--backends=moar",
       "--prefix=#{prefix}",
-      "--with-nqp=/usr/local/bin/nqp"
+      "--with-nqp=#{bin}/nqp"
     ]
     system "perl", "Configure.pl", *configure_args
     system "make"

@@ -3,10 +3,7 @@ class Enchive < Formula
   homepage "https://github.com/skeeto/enchive"
   url "https://github.com/skeeto/enchive/releases/download/3.4/enchive-3.4.tar.xz"
   sha256 "1e8551df0bb98a4f20930a010b3a6b01f60078af86288370ef93895a3918505e"
-
-  head do
-    url "https://github.com/skeeto/enchive.git"
-  end
+  head "https://github.com/skeeto/enchive.git"
 
   depends_on "make" => :build
 

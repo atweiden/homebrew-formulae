@@ -3,10 +3,7 @@ class Moarvm < Formula
   homepage "https://moarvm.org"
   url "https://moarvm.org/releases/MoarVM-2018.09.tar.gz"
   sha256 "1a7f4363dee1feacc230928c81d280182d4d969398669bf145235f35b49f8fe7"
-
-  head do
-    url "https://github.com/MoarVM/MoarVM.git"
-  end
+  head "https://github.com/MoarVM/MoarVM.git"
 
   depends_on "binutils" => :build
   depends_on "make" => :build
