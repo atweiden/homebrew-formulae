@@ -21,6 +21,7 @@ class Edbrowse < Formula
     end
     bin.install "build/edbrowse"
     man1.install "build/edbrowse.1.gz"
+    doc.install "doc/sample.ebrc"
     doc.install "doc/usersguide.html"
   end
 
