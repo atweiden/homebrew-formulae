@@ -33,6 +33,6 @@ class Edbrowse < Formula
         rl+
       }
     EOS
-    system "#{bin}/edbrowse", "-v"
+    assert_match "3.7.4", shell_output("#{bin}/edbrowse -v")
   end
 end
