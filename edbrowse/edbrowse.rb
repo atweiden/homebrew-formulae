@@ -28,6 +28,14 @@ class Edbrowse < Formula
   end
 
   test do
-    true
+    (testpath/".ebrc").write <<~EOS
+      function+init {
+        # turn debug off, don't show status messages from this script
+        db0
+        # use readline for input
+        rl+
+      }
+    EOS
+    system "#{bin}/edbrowse", "-v"
   end
 end
