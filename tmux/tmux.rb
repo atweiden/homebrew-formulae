@@ -1,6 +1,8 @@
 class Tmux < Formula
   desc "Terminal multiplexer"
   homepage "https://tmux.github.io/"
+  url "https://github.com/tmux/tmux/releases/download/2.8/tmux-2.8.tar.gz"
+  sha256 "7f6bf335634fafecff878d78de389562ea7f73a7367f268b66d37ea13617a2ba"
 
   head do
     url "https://github.com/tmux/tmux.git"
@@ -20,11 +22,14 @@ class Tmux < Formula
 
   def install
     system "sh", "autogen.sh" if build.head?
+    configure_args = %W[
+      --disable-dependency-tracking
+      --enable-utf8proc
+      --prefix=#{prefix}
+      --sysconfdir=#{etc}
+    ]
     ENV.append "LDFLAGS", "-lresolv"
-    system "./configure", "--disable-dependency-tracking",
-                          "--enable-utf8proc",
-                          "--prefix=#{prefix}",
-                          "--sysconfdir=#{etc}"
+    system "./configure", *configure_args
     system "make", "install"
     pkgshare.install "example_tmux.conf"
     bash_completion.install resource("completion")
