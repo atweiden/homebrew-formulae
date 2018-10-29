@@ -15,7 +15,7 @@ class Rakudo < Formula
     configure_args = [
       "--backends=moar",
       "--prefix=#{prefix}",
-      "--with-nqp=#{bin}/nqp"
+      "--with-nqp=#{Formula['nqp'].bin}/nqp"
     ]
     system "perl", "Configure.pl", *configure_args
     system "make"

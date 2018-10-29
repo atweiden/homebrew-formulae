@@ -14,7 +14,7 @@ class Nqp < Formula
     configure_args = [
       "--backends=moar",
       "--prefix=#{prefix}",
-      "--with-moar=#{bin}/moar"
+      "--with-moar=#{Formula['moarvm'].bin}/moar"
     ]
     system "perl", "Configure.pl", *configure_args
     system "make"
