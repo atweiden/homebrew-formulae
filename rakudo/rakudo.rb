@@ -2,8 +2,8 @@ require "FileUtils"
 class Rakudo < Formula
   desc "Production-ready, stable implementation of the Perl 6 language"
   homepage "https://rakudo.org"
-  url "https://rakudo.perl6.org/downloads/rakudo/rakudo-2018.09.tar.gz"
-  sha256 "4934b84f844adb61ec949b5f4fd31fbc86a83e2195fb2498a1bc2b77d9d859fb"
+  url "https://rakudo.perl6.org/downloads/rakudo/rakudo-2018.10.tar.gz"
+  sha256 "09f87ea4f869febceffe682f3391495cba829ae3119e7ea2e3d40b88b59cab45"
   head "https://github.com/rakudo/rakudo.git"
 
   depends_on "nqp"
