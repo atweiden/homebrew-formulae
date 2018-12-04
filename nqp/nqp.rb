@@ -11,10 +11,11 @@ class Nqp < Formula
   depends_on "perl" => :build
 
   def install
+    moarvm = Formula["moarvm"]
     configure_args = [
       "--backends=moar",
       "--prefix=#{prefix}",
-      "--with-moar=#{Formula['moarvm'].bin}/moar"
+      "--with-moar=#{moarvm.bin}/moar"
     ]
     system "perl", "Configure.pl", *configure_args
     system "make"

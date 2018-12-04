@@ -1,4 +1,3 @@
-require "FileUtils"
 class Rakudo < Formula
   desc "Production-ready, stable implementation of the Perl 6 language"
   homepage "https://rakudo.org"
@@ -12,17 +11,18 @@ class Rakudo < Formula
   depends_on "perl" => :build
 
   def install
+    nqp = Formula["nqp"]
     configure_args = [
       "--backends=moar",
       "--prefix=#{prefix}",
-      "--with-nqp=#{Formula['nqp'].bin}/nqp"
+      "--with-nqp=#{nqp.bin}/nqp"
     ]
     system "perl", "Configure.pl", *configure_args
     system "make"
     ENV["RAKUDO_LOG_PRECOMP"] = "1"
     ENV["RAKUDO_RERESOLVE_DEPENDENCIES"] = "0"
     system "make", "install"
-    FileUtils.mv "tools/install-dist.p6", "tools/perl6-install-dist"
+    mv "tools/install-dist.p6", "tools/perl6-install-dist"
     bin.install "tools/perl6-install-dist"
   end
 

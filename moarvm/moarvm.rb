@@ -9,13 +9,14 @@ class Moarvm < Formula
   depends_on "libffi"
   depends_on "libtommath"
   depends_on "libuv"
-  depends_on "binutils" => :build
   depends_on "make" => :build
   depends_on "perl" => :build
   depends_on "pkg-config" => :build
 
   def install
     libffi = Formula["libffi"]
+    make = Formula["make"]
+    pkgconfig = Formula["pkgconfig"]
     ENV.remove "CPPFLAGS", "-I#{libffi.include}"
     ENV.prepend "CPPFLAGS", "-I#{libffi.lib}/libffi-#{libffi.version}/include"
     configure_args = [
@@ -23,7 +24,9 @@ class Moarvm < Formula
       "--has-libffi",
       "--has-libtommath",
       "--has-libuv",
+      "--make=#{make.bin}/gmake",
       "--optimize",
+      "--pkgconfig=#{pkgconfig.bin}/pkg-config",
       "--prefix=#{prefix}"
     ]
     system "perl", "Configure.pl", *configure_args
