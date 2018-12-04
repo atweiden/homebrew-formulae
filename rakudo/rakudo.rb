@@ -5,17 +5,17 @@ class Rakudo < Formula
   sha256 "ad9ed66aaf45555cacc7f696ddafdb80ce9b659f36058e344593b5ca5edf22aa"
   head "https://github.com/rakudo/rakudo.git"
 
-  depends_on "nqp"
-  depends_on "nqp" => :build
   depends_on "make" => :build
+  depends_on "nqp" => :build
   depends_on "perl" => :build
+  depends_on "nqp"
 
   def install
     nqp = Formula["nqp"]
     configure_args = [
       "--backends=moar",
       "--prefix=#{prefix}",
-      "--with-nqp=#{nqp.bin}/nqp"
+      "--with-nqp=#{nqp.bin}/nqp",
     ]
     system "perl", "Configure.pl", *configure_args
     system "make"
