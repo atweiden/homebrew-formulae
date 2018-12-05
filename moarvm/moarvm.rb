@@ -5,7 +5,6 @@ class Moarvm < Formula
   sha256 "b0f378fb72dac6fa2af2ab9c0dbd8012fb9bc43d223a7583c4ecb68b17ffa7ea"
   head "https://github.com/MoarVM/MoarVM.git"
 
-  depends_on "make" => :build
   depends_on "perl" => :build
   depends_on "pkg-config" => :build
   depends_on "libatomic_ops"
@@ -15,7 +14,6 @@ class Moarvm < Formula
 
   def install
     libffi = Formula["libffi"]
-    make = Formula["make"]
     pkgconfig = Formula["pkgconfig"]
     ENV.remove "CPPFLAGS", "-I#{libffi.include}"
     ENV.prepend "CPPFLAGS", "-I#{libffi.lib}/libffi-#{libffi.version}/include"
@@ -24,7 +22,6 @@ class Moarvm < Formula
       "--has-libffi",
       "--has-libtommath",
       "--has-libuv",
-      "--make=#{make.bin}/gmake",
       "--optimize",
       "--pkgconfig=#{pkgconfig.bin}/pkg-config",
       "--prefix=#{prefix}",
