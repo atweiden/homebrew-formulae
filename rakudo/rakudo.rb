@@ -6,7 +6,6 @@ class Rakudo < Formula
   head "https://github.com/rakudo/rakudo.git"
 
   depends_on "make" => :build
-  depends_on "nqp" => :build
   depends_on "perl" => :build
   depends_on "nqp"
 

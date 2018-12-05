@@ -6,7 +6,6 @@ class Nqp < Formula
   head "https://github.com/perl6/nqp.git"
 
   depends_on "make" => :build
-  depends_on "moarvm" => :build
   depends_on "perl" => :build
   depends_on "moarvm"
 
