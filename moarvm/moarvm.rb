@@ -1,8 +1,8 @@
 class Moarvm < Formula
   desc "VM for NQP And Rakudo Perl 6"
   homepage "https://moarvm.org"
-  url "https://moarvm.org/releases/MoarVM-2018.11.tar.gz"
-  sha256 "b0f378fb72dac6fa2af2ab9c0dbd8012fb9bc43d223a7583c4ecb68b17ffa7ea"
+  url "https://moarvm.org/releases/MoarVM-2018.12.tar.gz"
+  sha256 "e433a2a56953fca16ed8eaf9a597f25a7e1556436888609429f38529c241693b"
   head "https://github.com/MoarVM/MoarVM.git"
 
   depends_on "perl" => :build

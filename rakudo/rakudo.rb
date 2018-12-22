@@ -1,8 +1,8 @@
 class Rakudo < Formula
   desc "Production-ready, stable implementation of the Perl 6 language"
   homepage "https://rakudo.org"
-  url "https://rakudo.perl6.org/downloads/rakudo/rakudo-2018.11.tar.gz"
-  sha256 "ad9ed66aaf45555cacc7f696ddafdb80ce9b659f36058e344593b5ca5edf22aa"
+  url "https://rakudo.perl6.org/downloads/rakudo/rakudo-2018.12.tar.gz"
+  sha256 "67bb02b9afd4f2a2a8542e25ce2691bc2d77864668f0fc82e1d39dea31a584fa"
   head "https://github.com/rakudo/rakudo.git"
 
   depends_on "make" => :build
