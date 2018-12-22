@@ -22,7 +22,7 @@ class Nqp < Formula
   end
 
   test do
-    out = `#{bin}/nqp -e 'for (0,1,2,3,4,5,6,7,8,9) { print($_); }'`
+    out = `#{bin}/nqp -e 'for (0,1,2,3,4,5,6,7,8,9) { print($_) }'`
     assert_equal "0123456789", out
     assert_equal 0, $CHILD_STATUS.exitstatus
   end
