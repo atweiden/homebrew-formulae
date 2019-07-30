@@ -2,8 +2,8 @@
 class Duktape < Formula
   desc "Embeddable Javascript engine with compact footprint"
   homepage "https://duktape.org"
-  url "https://duktape.org/duktape-2.3.0.tar.xz"
-  sha256 "ed6e2f3ab2061628a7aeee27ccff16538ba6a151480cccf2e846bd061e45afe8"
+  url "https://duktape.org/duktape-2.4.0.tar.xz"
+  sha256 "86a89307d1633b5cedb2c6e56dc86e92679fc34b05be551722d8cc69ab0771fc"
 
   def install
     make_args = ["-f", "Makefile.sharedlibrary"]
