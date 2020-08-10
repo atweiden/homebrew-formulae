@@ -1,8 +1,8 @@
 class Edbrowse < Formula
   desc "A command-line editor and web browser"
   homepage "http://www.edbrowse.org"
-  url "https://github.com/CMB/edbrowse/archive/v3.7.5.tar.gz"
-  sha256 "7d7c44d2c01cf23880ed0514c7fcfb8c19e21dff8ef937297cb14506fab1da7f"
+  url "https://github.com/CMB/edbrowse/archive/v3.7.6.tar.gz"
+  sha256 "a47a7ba363a72d310b08edee9847fbcfe0b7d1bf53c7b5cf4da10aae237b0abb"
   head "https://github.com/CMB/edbrowse.git"
 
   depends_on "curl"
@@ -34,6 +34,6 @@ class Edbrowse < Formula
         rl+
       }
     EOS
-    assert_match "3.7.5", shell_output("#{bin}/edbrowse -v")
+    assert_match "3.7.6", shell_output("#{bin}/edbrowse -v")
   end
 end
