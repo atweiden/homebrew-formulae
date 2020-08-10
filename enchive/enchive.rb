@@ -20,6 +20,6 @@ class Enchive < Formula
   end
 
   test do
-    true
+    system "#{bin}/enchive", "--version"
   end
 end

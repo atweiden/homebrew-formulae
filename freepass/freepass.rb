@@ -24,6 +24,6 @@ class Freepass < Formula
   end
 
   test do
-    true
+    system "#{bin}/freepass", "--version"
   end
 end
