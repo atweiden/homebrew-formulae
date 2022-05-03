@@ -1,8 +1,8 @@
 class Zcash < Formula
   desc "Implementation of the Zerocash protocol"
   homepage "https://z.cash/"
-  url "https://github.com/zcash/zcash/archive/v4.6.0.tar.gz"
-  sha256 "cff39a413672fec5d6a719efb14ab5191d0221e055a848cec5916ea106c6c20c"
+  url "https://github.com/zcash/zcash/archive/v4.7.0.tar.gz"
+  sha256 "e5fa7c1749cd62d5cf36ccb1e1c6e4c41e9e7f3bae6ebf46e7b37c6968cc25d6"
   license "MIT"
 
   depends_on "berkeley-db@6.2.23"
@@ -44,8 +44,8 @@ class Zcash < Formula
     # see: zcash/zcash/depends/packages/native_rust.mk
     system "rustup-init", "--no-modify-path", "-y"
     ENV.prepend_path "PATH", "#{HOMEBREW_CACHE}/cargo_cache/bin"
-    system "rustup", "toolchain", "install", "1.57.0", "--profile", "minimal"
-    system "rustup", "default", "1.57.0"
+    system "rustup", "toolchain", "install", "1.59.0", "--profile", "minimal"
+    system "rustup", "default", "1.59.0"
 
     ENV["RUST_TARGET"] = "x86_64-apple-darwin"
     ENV["CARGO_BUILD_TARGET"] = ENV["RUST_TARGET"]
