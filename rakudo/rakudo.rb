@@ -1,5 +1,5 @@
 class Rakudo < Formula
-  desc "Perl 6 compiler targeting MoarVM"
+  desc "Mature, production-ready implementation of the Raku language"
   homepage "https://rakudo.org"
   url "https://rakudo.org/dl/rakudo/rakudo-2022.07.tar.gz"
   sha256 "7a3bc9d654e1d2792a055b4faf116ef36d141f6b6adde7aa70317705f26090ad"
