@@ -1,5 +1,5 @@
 class Nqp < Formula
-  desc "Lightweight Perl 6-like environment for virtual machines"
+  desc "Lightweight Raku-like environment for virtual machines"
   homepage "https://github.com/Raku/nqp"
   url "https://rakudo.org/dl/nqp/nqp-2022.07.tar.gz"
   sha256 "58081c106d672a5406018fd69912c8d485fd12bf225951325c50c929a8232268"
