@@ -1,5 +1,5 @@
 class Moarvm < Formula
-  desc "Virtual machine for NQP and Rakudo Perl 6"
+  desc "VM with adaptive optimization and JIT compilation, built for Rakudo"
   homepage "https://moarvm.org"
   url "https://moarvm.org/releases/MoarVM-2022.07.tar.gz"
   sha256 "337ef04d16f826f99465c653b92006028fe220be68d3dcfd0729612f4f6b5b46"
