@@ -5,6 +5,11 @@ class Nqp < Formula
   sha256 "58081c106d672a5406018fd69912c8d485fd12bf225951325c50c929a8232268"
   license "Artistic-2.0"
 
+  livecheck do
+    url "https://github.com/Raku/nqp/releases"
+    regex(/^v?(\d+(?:\.\d+)+)$/i)
+  end
+
   depends_on "libffi"
   depends_on "libtommath"
   depends_on "libuv"
