@@ -5,6 +5,11 @@ class Rakudo < Formula
   sha256 "7a3bc9d654e1d2792a055b4faf116ef36d141f6b6adde7aa70317705f26090ad"
   license "Artistic-2.0"
 
+  livecheck do
+    url "https://github.com/rakudo/rakudo/releases"
+    regex(/^v?(\d+(?:\.\d+)+)$/i)
+  end
+
   depends_on "libffi"
   depends_on "libtommath"
   depends_on "libuv"
