@@ -6,8 +6,8 @@ class Moarvm < Formula
   license "Artistic-2.0"
 
   livecheck do
-    url :stable
-    regex(/^v?(\d+(?:\.\d+)+)$/i)
+    url "https://moarvm.org/releases/"
+    regex(/href=.*?MoarVM-(\d+(?:\.\d+)+)\.t/i)
   end
 
   depends_on "pkg-config" => :build
