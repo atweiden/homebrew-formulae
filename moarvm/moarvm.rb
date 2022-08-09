@@ -11,12 +11,12 @@ class Moarvm < Formula
   end
 
   depends_on "pkg-config" => :build
-  depends_on "libffi"
   depends_on "libtommath"
   depends_on "libuv"
   depends_on "zstd"
 
   uses_from_macos "perl" => :build
+  uses_from_macos "libffi"
 
   conflicts_with "rakudo-star", because: "rakudo-star currently ships with moarvm included"
 

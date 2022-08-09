@@ -10,13 +10,13 @@ class Rakudo < Formula
     regex(/^v?(\d+(?:\.\d+)+)$/i)
   end
 
-  depends_on "libffi"
   depends_on "libtommath"
   depends_on "libuv"
   depends_on "nqp"
   depends_on "zstd"
 
   uses_from_macos "perl" => :build
+  uses_from_macos "libffi"
 
   conflicts_with "rakudo-star"
 

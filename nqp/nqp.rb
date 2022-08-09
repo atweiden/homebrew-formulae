@@ -10,12 +10,12 @@ class Nqp < Formula
     regex(/^v?(\d+(?:\.\d+)+)$/i)
   end
 
-  depends_on "libffi"
   depends_on "libtommath"
   depends_on "libuv"
   depends_on "moarvm"
 
   uses_from_macos "perl" => :build
+  uses_from_macos "libffi"
 
   conflicts_with "rakudo-star", because: "rakudo-star currently ships with nqp included"
 
